@@ -4,9 +4,10 @@
 
 ## Traduções
 
-* [Russian](https://github.com/matmuchrapna/CSS-Guidelines/blob/master/README%20Russian.md)
-* [Chinese](https://github.com/chadluo/CSS-Guidelines/blob/master/README.md)
-* [French](https://github.com/flexbox/CSS-Guidelines/blob/master/README.md)
+* [Inglês](https://github.com/csswizardry/CSS-Guidelines)
+* [Russo](https://github.com/matmuchrapna/CSS-Guidelines/blob/master/README%20Russian.md)
+* [Chines](https://github.com/chadluo/CSS-Guidelines/blob/master/README.md)
+* [Francês](https://github.com/flexbox/CSS-Guidelines/blob/master/README.md)
 * [Portugues](https://github.com/msodeveloper/CSS-Guidelines)
 
 ---
