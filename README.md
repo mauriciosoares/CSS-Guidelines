@@ -1,130 +1,131 @@
-# General CSS notes, advice and guidelines
+# Notas gerais de CSS, conselhos e diretrizes
 
 ---
 
-## Translations
+## Traduções
 
 * [Russian](https://github.com/matmuchrapna/CSS-Guidelines/blob/master/README%20Russian.md)
 * [Chinese](https://github.com/chadluo/CSS-Guidelines/blob/master/README.md)
 * [French](https://github.com/flexbox/CSS-Guidelines/blob/master/README.md)
+* [Portugues](https://github.com/msodeveloper/CSS-Guidelines)
 
 ---
 
-In working on large, long running projects with dozens of developers, it is
-important that we all work in a unified way in order to, among other things:
+Trabalhando em um projeto grande, com dezenas de desenvolvedores, é importante
+que trabalhemos de um jeito unificado, para:
 
-* Keep stylesheets maintainable
-* Keep code transparent and readable
-* Keep stylesheets scalable
+* Manter a folha de estilo sustentável
+* Manter o código transparente e legível
+* Manter a folha de estilo escalável
 
-There are a variety of techniques we must employ in order to satisfy these
-goals.
+Existe uma variedade de técnicas que precisamos seguir para satisfazer esses
+objetivos.
 
-The first part of this document will deal with syntax, formatting and CSS
-anatomy, the second part will deal with approach, mindframe and attitude toward
-writing and architecting CSS. Exciting, huh?
+A primeira parte desse documento lida com sintaxe, formatação e anatomia
+do CSS, a segudna parte lida com a abordagem, mindframe, e a atitude em relação
+a escrita e arquitetura do CSS. Existante né?
 
-## Contents
+## Conteúdo
 
-* [CSS document anatomy](#css-document-anatomy)
-  * [General](#general)
-  * [One file vs. many files](#one-file-vs-many-files)
-  * [Table of contents](#table-of-contents)
-  * [Section titles](#section-titles)
-* [Source order](#source-order)
-* [Anatomy of rulesets](#anatomy-of-rulesets)
-* [Naming conventions](#naming-conventions)
+* [Anatomia do documento CSS](#css-document-anatomy)
+  * [Geral](#general)
+  * [Um arquivo vs. Muitos arquivos](#one-file-vs-many-files)
+  * [Tabela de conteúdos](#table-of-contents)
+  * [Títulos da seção](#section-titles)
+* [Ordem do código](#source-order)
+* [Anatomia do conjunto de regras](#anatomy-of-rulesets)
+* [Convenções para nomes](#naming-conventions)
   * [JS hooks](#js-hooks)
-  * [Internationalisation](#internationalisation)
-* [Comments](#comments)
+  * [Internacionalização](#internationalisation)
+* [Comentários](#comments)
   * [Comments on steroids](#comments-on-steroids)
     * [Quasi-qualified selectors](#quasi-qualified-selectors)
     * [Tagging code](#tagging-code)
     * [Object/extension pointers](#objectextension-pointers)
-* [Writing CSS](#writing-css)
-* [Building new components](#building-new-components)
+* [Escrevendo CSS](#writing-css)
+* [Construindo novos componentes](#building-new-components)
 * [OOCSS](#oocss)
 * [Layout](#layout)
-* [Sizing UIs](#sizing-uis)
-  * [Font sizing](#font-sizing)
-* [Shorthand](#shorthand)
+* [Tamnho das UIs](#sizing-uis)
+  * [Tamanho das fontes](#font-sizing)
+* [Taquigrafia](#shorthand)
 * [IDs](#ids)
-* [Selectors](#selectors)
-  * [Over qualified selectors](#over-qualified-selectors)
-  * [Selector performance](#selector-performance)
+* [Seletores](#selectors)
+  * [Seletores super qualificados](#over-qualified-selectors)
+  * [Performance de Seletores](#selector-performance)
 * [CSS selector intent](#css-selector-intent)
 * [`!important`](#important)
-* [Magic numbers and absolutes](#magic-numbers-and-absolutes)
-* [Conditional stylesheets](#conditional-stylesheets)
-* [Debugging](#debugging)
-* [Preprocessors](#preprocessors)
+* [Números mágicos e absolutos](#magic-numbers-and-absolutes)
+* [Stylesheet condicional](#conditional-stylesheets)
+* [Debugando](#debugging)
+* [Preprocessadores](#preprocessors)
 
 ---
 
-## CSS Document Anatomy
+## Anatomia do documento CSS
 
-No matter the document, we must always try and keep a common formatting. This
-means consistent commenting, consistent syntax and consistent naming.
+Não importa o documento, nós precisamos seguir um formato padrão. Isso
+significa comentários consistentes, sintaxe consistente e nomeação consistente.
 
-### General
+### Geral
 
-Limit your stylesheets to a maximum 80 character width where possible.
-Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
-nothing we can do about that.
+Limite suas Stylesheets para o máximo 80 caracteres de largura onde possível.
+Excessões podem ser sintaxes de gradiente, e URLS nos comentários. Ai tudo bem, não
+tem nada que possamos fazer sobre isso.
 
-I prefer four (4) space indents over tabs and write multi-line CSS.
+Eu prefiro quatro (4) espaços de identação ao invés de tabs, e escrever CSS em multiplas linhas.
 
-### One file vs. many files
+### Um arquivo vs. Varios arquivos
 
-Some people prefer to work with single, large files. This is fine, and by
-sticking to the following guidelines you’ll encounter no problems. Since moving
-to Sass I have started sharding my stylesheets out into lots of tiny includes.
-This too is fine… Whichever method you choose, the following rules and
-guidelines apply. The only notable difference is with regards our table of
-contents and our section titles. Read on for further explanation…
+Algumas pessoas preferem trabalhar com um único, e gigante arquivo. Não tem problema, e seguindo
+os próximos guidelines você não vai encontrar nenhum problema. Desde que mudei
+para Sass, eu comecei a quebrar meus stylesheets em varios e pequenos pedaços.
+Isso também não tem problema... Seja qual for o método que você escolher, as seguintes regras e
+guidelines se aplicam. A única diferença notável é com relação a nossa tabela de
+conteúdos e os nossos títulos de seção. Continue lendo para mais explicação...
 
-### Table of contents
+### Tabela de conteúdos
 
-At the top of stylesheets, I maintain a table of contents which will detail the
-sections contained in the document, for example:
+No topo da nossa folha de estilo, Eu mantenho a tabela de conteúdos a qual vai 
+detalhar a seção contida no documento, por exemplo:
 
     /*------------------------------------*\
-        $CONTENTS
+        $CONTEUDOS
     \*------------------------------------*/
     /**
-     * CONTENTS............You’re reading it!
-     * RESET...............Set our reset defaults
-     * FONT-FACE...........Import brand font files
+     * CONTEUDOS............Você esta lendo isso!
+     * RESET...............Padroniza nosso reset
+     * FONT-FACE...........Importar arquivos de fonte
      */
 
-This will tell the next developer(s) exactly what they can expect to find in
-this file. Each item in the table of contents maps directly to a section title.
+Isso vai avisar o próximo(s) desenvolvedor(es) exatamente o que eles esperam achar
+nesse arquivo. Cada item na tabela de conteúdos mapeia diretamente para a seção do título.
 
-If you are working in one big stylesheet, the corresponding section will also be
-in that file. If you are working across multiple files then each item in the
-table of contents will map to an include which pulls that section in.
+Se você está trabalhando com uma única e grande folha de estilo, a seção correspondente
+também vai estar nesse arquivo. Se você está trabalhando com multiplos arquivos, então
+cada item na tabela de conteúdos vai mapear para um include que se refere a aquela seção.
 
-### Section titles
+### Títulos de Seções
 
-The table of contents would be of no use unless it had corresponding section
-titles. Denote a section thus:
-
-    /*------------------------------------*\
-        $RESET
-    \*------------------------------------*/
-
-The `$` prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F)
-for `$[SECTION-NAME]` and **limit our search scope to section titles only**.
-
-If you are working in one large stylesheet, you leave five (5) carriage returns
-between each section, thus:
+A tabela de conteúdos não teria uso, a menos que ela tenha seções correspondentes
+a seus titulos. Escreva uma seção assim:
 
     /*------------------------------------*\
         $RESET
     \*------------------------------------*/
-    [Our
-    reset
-    styles]
+
+Prefixando o nome da seção com `$` nos permite rodar um comando de busca ([Cmd|Ctrl]+F)
+pelo `$[NOME-DA-SEÇÃO]` e **limita nossa pesquisa para somente títulos de seções**.
+
+Se você já trabalha em uma folha de estilo grande, Deixe cinco (5) quebras de linhas
+entre cada seção
+
+    /*------------------------------------*\
+        $RESET
+    \*------------------------------------*/
+    [Nossos
+    estilos
+    do reset]
 
 
 
@@ -134,11 +135,12 @@ between each section, thus:
         $FONT-FACE
     \*------------------------------------*/
 
-This large chunk of whitespace is quickly noticeable when scrolling quickly
-through larger files.
+Essa grande separação de quebras de linha é facilmente notavel quando
+você está escrollando em um arquivo grande.
 
-If you are working across multiple, included stylesheets, start each of those
-files with a section title and there is no need for any carriage returns.
+Se você trabalha com multiplos arquivos, folhas de estilo incluidas, comece
+cada um desses arquivos com um título de seção, e não tem porque você fazer
+quebras de linhas.
 
 ## Source order
 
