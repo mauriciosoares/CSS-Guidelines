@@ -143,46 +143,44 @@ Se você trabalha com multiplos arquivos, folhas de estilo incluidas, comece
 cada um desses arquivos com um título de seção, e não tem porque você fazer
 quebras de linhas.
 
-## Source order
+## Ordem do código
 
-Try and write stylesheets in specificity order. This ensures that you take full
-advantage of inheritance and CSS’ first <i>C</i>; the cascade.
+Tente escrever as folhas de estilo em uma ordem específica. Isso garante que você 
+tire o máximo proveito de heranças e o primeiro C do CSS; a cascata.
 
-A well ordered stylesheet will be ordered something like this:
+Uma folha de estilo bem organizada parece com isso:
 
-1. **Reset** – ground zero.
-2. **Elements** – unclassed `h1`, unclassed `ul` etc.
-3. **Objects and abstractions** — generic, underlying design patterns.
-4. **Components** – full components constructed from objects and their
-   extensions.
-5. **Style trumps** – error states etc.
+1. **Reset** – o marco zero.
+2. **Elementos** – `h1` sem classe, `ul` sem classe, etc...
+3. **Objetos e abstrações** — generico, pardões de design subjacentes.
+4. **Componentes** – componentes completos construidos dos objetos e suas extensões.
+5. **Estilos com !important** – erros, estados, etc.
 
 This means that—as you go down the document—each section builds upon and
 inherits sensibly from the previous one(s). There should be less undoing of
 styles, less specificity problems and all-round better architected stylesheets.
 
-For further reading I cannot recommend Jonathan Snook’s
-[SMACSS](http://smacss.com) highly enough.
+Para mais informaçãos, eu recomendo altamente o [SMACSS](http://smacss.com)
+do Jonathan Snook.
 
-## Anatomy of rulesets
+## Anatomia do conjunto de regras
 
-    [selector]{
-        [property]:[value];
-        [<- Declaration ->]
+    [seletor]{
+        [propriedade]:[valor];
+        [<- Declaracao ->]
     }
 
-I have a number of standards when structuring rulesets.
+Eu tenho alguns padrões quando estou estruturando conjuntos de regras
 
-* Use hyphen delimited class names (except for BEM notation,
-  [see below](#naming-conventions))
-* 4 space indented
-* Multi-line
-* Declarations in relevance (NOT alphabetical) order
-* Indent vendor prefixed declarations so that their values are aligned
-* Indent our rulesets to mirror the DOM
-* Always include the final semi-colon in a ruleset
+* Use hífem para delimitar nomes de classes(exceto por notações BEM, [veja abaixo](#naming-conventions))
+* 4 espaços de identação
+* Multi-linhas
+* Declarações em ordem de relevancia (NÃO alfabetica)
+* Idente declarações prefixadas, para que seus valores estejam alinhados
+* Idente seus conjuntos de regra para ser um espelho do DOM
+* Sempre inclua o ponto e virgula no final de um conjunto de regra
 
-A brief example:
+Um pequeno exemplo:
 
     .widget{
         padding:10px;
@@ -202,16 +200,16 @@ A brief example:
             padding:0.25em;
         }
 
-Here we can see that `.widget-heading` must be a child of `.widget` as we have
-indented the `.widget-heading` ruleset one level deeper than `.widget`. This is
-useful information to developers that can now be gleaned just by a glance at the
-indentation of our rulesets.
+Aqui podemos ver que `.widget-heding` deve ser uma filha de `.widget` como nós
+identamos o `.widget-heading` um level mais a dentro do que `.widget`. Isso é 
+uma informação útel para desenvolvedores que podem se achar apenas por um olhar 
+na identação de regras.
 
-We can also see that `.widget-heading`’s declarations are ordered by their
-relevance; `.widget-heading` must be a textual element so we begin with our
-text rules, followed by everything else.
+Nós podemos ver também que as declarações de `.widget-heading` estão ordenadas
+por relevância; `.widget-heading` deve ser um elemento contextual entao nós
+começamos por regras de texto, seguido por todo o resto.
 
-One exception to our multi-line rule might be in cases of the following:
+Uma exceção para nossa regra multi-linha pode ser a seguinte:
 
     .t10    { width:10% }
     .t20    { width:20% }
@@ -227,10 +225,10 @@ One exception to our multi-line rule might be in cases of the following:
     .t80    { width:80% }
     .t90    { width:90% }
 
-In this example (from [inuit.css’s table grid system](https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
-it makes more sense to single-line our CSS.
+Nesse exemplo (de [inuit.css’s table grid system](https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
+faz mais sentido usar uma única linha do nosso CSS.
 
-## Naming conventions
+## Convenções de Nome
 
 For the most part I simply use hyphen delimited classes (e.g. `.foo-bar`, not
 `.foo_bar` or `.fooBar`), however in certain circumstances I use BEM (Block,
