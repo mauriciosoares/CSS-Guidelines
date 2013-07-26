@@ -282,53 +282,53 @@ para garantir o reuso. Extensões de objetos devem ser bem mais explicitamente
 nomeadas (ex. `user-avatar-link`). Não se preocupe com o tamanho das classes;
 gzip vai sempre comprimir códigos bem escritos _incredibly_ well.
 
-### Classes in HTML
+### Classes no HTML
 
-In a bid to make things easier to read, separate classes is your HTML with two
-(2) spaces, thus:
+Em uma tentativa de tornar as coisas masi fácil de ler, separar classes no seu HTML em 
+dois (2) espaço, assim:
 
     <div class="foo--bar  bar__baz">
 
-This increased whitespace should hopefully allow for easier spotting and reading
-of multiple classes.
+Esse espaço em branco deve facilitar para detectar e ler multiplas classes.
 
 ### JS hooks
 
-**Never use a CSS _styling_ class as a JavaScript hook.** Attaching JS behaviour
-to a styling class means that we can never have one without the other.
+**Nunca use o estilo das classes de CSS como um gancho de Javascript. Atribuir
+comportamentos de Javascript para uma classe de estilo significa que nós nunca poderemos
+ter uma sem a outra.
 
-If you need to bind to some markup use a JS specific CSS class. This is simply a
-class namespaced with `.js-`, e.g. `.js-toggle`, `.js-drag-and-drop`. This means
-that we can attach both JS and CSS to classes in our markup but there will never
-be any troublesome overlap.
+Se você precisa vincular algum marcação use uma classe específica de Javascript.
+Isso é simplesmente uma classe nomeada com `.js-`, ex. `js-toggle`, `.js-drag-and-drop`.
+Isso significa que nós podemos atribuir classes JS e CSS na nossa marcação e nunca 
+haverá algum sobreposição problemática.
 
     <th class="is-sortable  js-is-sortable">
     </th>
 
-The above markup holds two classes; one to which you can attach some styling for
-sortable table columns and another which allows you to add the sorting
-functionality.
+A marcação acima contem 2 classes; uma o qual você pode atribuir algum estilo
+para colunas de tabelas classíficaveis e outra o qual te permite te adicionar
+algum tipo de funcionalidade.
 
-### Internationalisation
+### Internacionalização
 
-Despite being a British developer—and spending all my life writing <i>colour</i>
-instead of <i>color</i>—I feel that, for the sake of consistency, it is better
-to always use US-English in CSS. CSS, as with most (if not all) other languages,
-is written in US-English, so to mix syntax like `color:red;` with classes like
-`.colour-picker{}` lacks consistency. I have previously suggested and advocated
-writing bilingual classes, for example:
+Apesar de ser um desenvolvedor britânico-e passado toda minha vida escrevendo <i>colour</i>
+ao invés de <i>color</i>—Eu sinto que, por uma questão de consistência, é melhor 
+sempre usar o US-English (inglês americano) em CSS. CSS, como eu muitas (se não todas) oturas linguas,
+é escrita em US-English (inglês americano), entao misturar sintaxes como `color:red;` com classes como
+`colour-picker{}` carece de consistência. Eu já sugeri e defendi escrever classes
+bilinguas, como por exemplo:
 
     .color-picker,
     .colour-picker{
     }
 
-However, having recently worked on a very large Sass project where there were
-dozens of colour variables (e.g. `$brand-color`, `$highlight-color` etc.),
-maintaining two versions of each variable soon became tiresome. It also means
-twice as much work with things like find and replace.
+Entretanto, tendo trabalhado em um projeto bem grande em Sass onde haviam duzias
+de variaves de cor (ex. `$brand-color`, `$highlight-color` etc.), 
+manter duas versões de cada variavel logo se tornou cansativa. Isso também significa
+duas vezes o trabalho com coisas como Find e Replace.
 
-In the interests of consistency, always name classes and variables in the locale
-of the language you are working with.
+Em uma questão de coerência, sempre nomeie as classes e variaveis na linguagem
+do local em que você está trabalhando.
 
 ## Comments
 
