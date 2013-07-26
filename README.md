@@ -330,74 +330,75 @@ duas vezes o trabalho com coisas como Find e Replace.
 Em uma questão de coerência, sempre nomeie as classes e variaveis na linguagem
 do local em que você está trabalhando.
 
-## Comments
+## Comentários
 
-I use a docBlock-esque commenting style which I limit to 80 characters in length:
+Eu uso o esquema de estilo de comentários docBlock, o qual eu limito a 80 caracteres de comprimento:
 
     /**
-     * This is a docBlock style comment
+     * Este é um estilo de comentário docBlock
      *
-     * This is a longer description of the comment, describing the code in more
-     * detail. We limit these lines to a maximum of 80 characters in length.
+     * Este é uma descrição masi longa do comentário, descrevendo o código em mais
+     * detalhe. Nós limitamos as linhas para no máximo 80 caracteres de comprimento.
      *
-     * We can have markup in the comments, and are encouraged to do so:
+     * Nós podemos ter marcação no comentário, e é bom faze-lo:
      *
        <div class=foo>
            <p>Lorem</p>
        </div>
      *
-     * We do not prefix lines of code with an asterisk as to do so would inhibit
+     * Nós não prefixamos linhas de código com um asterisco, pois faze-lo inibiria
      * copy and paste.
      */
 
-You should document and comment our code as much as you possibly can, what may
-seem or feel transparent and self explanatory to you may not be to another dev.
-Write a chunk of code then write about it.
+Você deve documentar e comentar seu código tanto quanto você pode, o que pode
+parecer transparente e auto explicatório para você pode nao ser para outro desenvolvedor.
+Escreva seu código depois comente sobre ele.
 
 ### Comments on steroids
 
+Existe varias técnicas avançadas que você pode empregar no que diz respeito
+a comentários, 
 There are a number of more advanced techniques you can employ with regards
-comments, namely:
+comments, nomeadamente:
 
-* Quasi-qualified selectors
-* Tagging code
-* Object/extension pointers
+* Seletores quasi-qualificados
+* Código Taggeado
+* Ponteiros de Objetos/extensões
 
-#### Quasi-qualified selectors
+#### Seletores Quasi-qualificados
 
-You should never qualify your selectors; that is to say, we should never write
-`ul.nav{}` if you can just have `.nav`. Qualifying selectors decreases selector
-performance, inhibits the potential for reusing a class on a different type of
-element and it increases the selector’s specificity. These are all things that
-should be avoided at all costs.
+Você nunca deve qualificar seus seletores; isto é, nós nunca devemos escrever
+`ul.nav{}` se você pode ter `.nav`. Seletores qualificados diminui a performance
+do seletor, inibe o potencial de reusar a classe em diferentes tipos de 
+elemento e aumenta a especificidade do seletor. Todas essas coisas devem ser 
+evitadas a todo custo.
 
-However, sometimes it is useful to communicate to the next developer(s) where
-you intend a class to be used. Let’s take `.product-page` for example; this
-class sounds as though it would be used on a high-level container, perhaps the
-`html` or `body` element, but with `.product-page` alone it is impossible to
-tell.
+Porém, algumas vezes é útil comunicar o próximo desenvolvedor onde
+você quer que uma classe seja usada. Vamos ver `.product-page` por exemplo; essa
+classe parece que deve ser usada em um container de alto level, talvés o elemento
+`html` ou o elemento `body`, mas com `.product-page` sozinho é impossivel de dizer.
 
-By quasi-qualifying this selector (i.e. commenting out the leading type
-selector) we can communicate where we wish to have this class applied, thus:
+Por quasi-qualificar esse seletor (ex. comentando o seletor de liderança)
+nós conseguimos comunicar one nós desejamos que nossa classe seja aplicada, assim:
 
     /*html*/.product-page{}
 
-We can now see exactly where to apply this class but with none of the
-specificity or non-reusability drawbacks.
+Agora nós podemos ver exatamente onde aplicar essa classe mas sem nenhuma
+especificação ou não reutilização inconveniente.
 
-Other examples might be:
+Outros exemplos podem ser:
 
     /*ol*/.breadcrumb{}
     /*p*/.intro{}
     /*ul*/.image-thumbs{}
 
-Here we can see where we intend each of these classes to be applied without
-actually ever impacting the specificity of the selectors.
+Aqui podemos ver onde nós pretendemos que cada uma dessas classes sejam usadas
+sem impactar a especificação dos seletores.
 
-#### Tagging code
+#### Taggeando código
 
-If you write a new component then leave some tags pertaining to its function in
-a comment above it, for example:
+Se você escrever um novo componente deixe alguma tag pertencente a essa funcao em
+um comentário acima dele, por exemplo:
 
     /**
      * ^navigation ^lists
@@ -409,9 +410,9 @@ a comment above it, for example:
      */
     .matrix{}
 
-These tags allow other developers to find snippets of code by searching for
-function; if a developer needs to work with lists they can run a find for
-`^lists` and find the `.nav` and `.matrix` objects (and possibly more).
+Essas tags permitem que outros desenvolvedores achem snippets do código pesquisando por
+função; se um desenvolvedor precisar trabalhar com listas eles podem rodar um pesquiasr por
+`^lists` e achar os objets `.nav` e `.matrix` (e possivelmente mais).
 
 #### Object/extension pointers
 
