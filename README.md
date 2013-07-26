@@ -414,53 +414,52 @@ Essas tags permitem que outros desenvolvedores achem snippets do código pesquis
 função; se um desenvolvedor precisar trabalhar com listas eles podem rodar um pesquiasr por
 `^lists` e achar os objets `.nav` e `.matrix` (e possivelmente mais).
 
-#### Object/extension pointers
+#### Apontadores de Objetos/Extensões
 
-When working in an object oriented manner you will often have two chunks of CSS
-(one being the skeleton (the object) and the other being the skin (the
-extension)) that are very closely related, but that live in very different
-places. In order to establish a concrete link between the object and its
-extension with use <i>object/extension pointers</i>. These are simply comments
-which work thus:
+Ao trabalhar de forma orientada a objetos você vai frequentemente ter dois grupos de CSS
+(um sendo o esqueleto (o objeto) e o outro sendo a pele (a extensão)) que sao relacionadas,
+mas que vivem em lugares diferentes. A fim de estabelecer uma conexão concreta entre o objeto
+e sua extensão use <i>apontadores objeto/extensão</i>. Eles são simplesmente comentarios
+que trabalham assim:
 
-In your base stylesheet:
+Na sua folha de estilo base:
 
     /**
-     * Extend `.foo` in theme.css
+     * Extender `.foo` em theme.css
      */
      .foo{}
 
-In your theme stylesheet:
+Na sua folha de estilo do tema:
 
     /**
-     * Extends `.foo` in base.css
+     * Extender `.foo` em base.css
      */
      .bar{}
 
-Here we have established a concrete relationship between two very separate
-pieces of code.
+Aqui nós estabilizamos uma relação concreta entre dois pedaços bem diferentes
+de código.
 
 ---
 
-## Writing CSS
+## Escrevendo CSS
 
-The previous section dealt with how we structure and form our CSS; they were
-very quantifiable rules. The next section is a little more theoretical and deals
-with our attitude and approach.
+A seção anterior lida com como devemos estruturar e formar nosso CSS; Elas eram
+regras muito quantificáveis. A próxima seção é umpouco mais teorica e lida
+com nossa atitudo e abordgem.
 
-## Building new components
+## Escrevendo novos componentes
 
-When building a new component write markup **before** CSS. This means you can
-visually see which CSS properties are naturally inherited and thus avoid
-reapplying redundant styles.
+Quando você está construindo um novo componente escreva a marcação **antes** do CSS.
+Isso significa que você pode visualmente ver qual propriedade de CSS é naturalmente herdada
+e entao evitar reaplicar redundancia de estilo.
 
-By writing markup first you can focus on data, content and semantics and then
-apply only the relevant classes and CSS _afterwards_.
+Escrevendo a marcação antes você pode focar na data, conteúdo e semantica e depois
+aplicar somente as classes relevantes e o css _depois_.
 
 ## OOCSS
 
-I work in an OOCSS manner; I split components into structure (objects) and
-skin (extensions). As an **analogy** (note, not example) take the following:
+Eu trabalho em uma maneira orientada objeta de CSS; Eu separo componentes em uma estrutura de (objetos) e
+pele (extensões). Como uma analogia (note, não um exemplo) segue o seguinte:
 
     .room{}
 
@@ -468,70 +467,67 @@ skin (extensions). As an **analogy** (note, not example) take the following:
     .room--bedroom{}
     .room--bathroom{}
 
-We have several types of room in a house, but they all share similar traits;
-they all have floors, ceilings, walls and doors. We can share this information
-in an abstracted `.room{}` class. However we have specific types of room that
-are different from the others; a kitchen might have a tiled floor and a bedroom
-might have carpets, a bathroom might not have a window but a bedroom most likely
-will, each room likely has different coloured walls. OOCSS teaches us to
-abstract the shared styles out into a base object and then _extend_ this
-information with more specific classes to add the unique treatment(s).
+Nós temos vários tipos de quartos em uma casa, mas eles compartilham traços similares;
+todos eles tem pisos, tetos, paredes e portas. Nós podemos compartilhas essa informação
+em uma classe abstrata `.room{}`. Entretato nós temos tipos específicos de quartos que
+podem ter carpetes, um banheiro pode não ter uma janela mas um quarto quase sempre vai,
+cada quarto pode ter paredes coloridas. OOCSS nos ensina a abstrair os estilos compartilhados
+em uma base de objeto e que _extende_ essa informação com mais classes específicas para adicionar
+tratamento(s) específico(s).
 
-So, instead of building dozens of unique components, try and spot repeated
-design patterns across them all and abstract them out into reusable classes;
-build these skeletons as base ‘objects’ and then peg classes onto these to
-extend their styling for more unique circumstances.
+Então, ao invés de construir dezenas de componentes únicos, tente e localize padrões de design
+repetidos por eles e abstraia eles em uma classe reusável;
+construa esses esqueletos como ‘objetos‘ base e depois transforme em classes para extender
+seus estilos para circunstancias mais únicas.
 
-If you have to build a new component split it into structure and skin; build the
-structure of the component using very generic classes so that we can reuse that
-construct and then use more specific classes to skin it up and add design
-treatments.
+Se você tiver que construir um novo componente, divida ele em estrutura e pele; construia a
+estrutura do componente usando classes bem genéricas para que possamos reusar essa construção
+e depois usar classes específicas criar a pele e depois adicionar o tratamento do design.
 
 ## Layout
 
-All components you build should be left totally free of widths; they should
-always remain fluid and their widths should be governed by a parent/grid system.
+Todos os componentes que você construir não deve conter widths; eles devem
+sempre ser fluidos e seus widths devem ser governado por um sistema de grid.
 
-Heights should **never** be be applied to elements. Heights should only be
-applied to things which had dimensions _before_ they entered the site (i.e.
-images and sprites). Never ever set heights on `p`s, `ul`s, `div`s, anything.
-You can often achieve the desired effect with `line-height` which is far more
-flexible.
+Heights **nunca** devem ser aplicados a elementos. Heights devem somente ser aplicados
+a coisas que tem dimensões _antes_ de eles terem entrado no site(ex. 
+imagens e sprites). Nunca use heights em `p`s, `ul`s, `div`s, nada.
+Você pode frequentemente alcançar o efeito desejado usando `line-height` o que é bem mais flexível.
 
-Grid systems should be thought of as shelves. They contain content but are not
-content in themselves. You put up your shelves then fill them with your stuff.
-By setting up our grids separately to our components you can move components
-around a lot more easily than if they had dimensions applied to them; this makes
-our front-ends a lot more adaptable and quick to work with.
+Sistemas grid devem ser pensados como prateleiras. Eles contem o conteúdo mas não
+são o conteúdo em sí mesmos. Você coloca suas prateleiras e depois as preenche com suas coisas.
+Configurando nossos grids separadamentes de nossos componentes, você pode mover componentes
+ao redor muito mais facíl do que se você tivesse dimensões aplicadas a eles; isso faz
+nosso front-end muito mais adaptavel e rapido de trabalhar.
 
-You should never apply any styles to a grid item, they are for layout purposes
-only. Apply styling to content _inside_ a grid item. Never, under _any_
-circumstances, apply box-model properties to a grid item.
+You nunca deve aplicar qualquer estilo para um item de grid, eles sao fins de layout
+apenas. Aplicar estilo para um conteúdo _dentro_ de um item de grid. Nunca, sob _qualquer_ 
+circunstancias, aplique propriedades de modelo-box a um item de grid.
 
-## Sizing UIs
+## Dimensionando UIs
 
-I use a combination of methods for sizing UIs. Percentages, pixels, ems, rems
-and nothing at all.
+Eu uso uma combinação de métodos para dimensioamento de UIs. Porcentagens, pixels, ems, rems
+e nada.
 
-Grid systems should, ideally, be set in percentages. Because I use grid systems
-to govern widths of columns and pages, I can leave components totally free of
-any dimensions (as discussed above).
+Sistemas de Grid deveriam, idealmente, ser configurados em porcentagens. Porque eu uso sistemas de grid
+para administrar widths das colunas e paginas, eu posso deixar componentes totalmente livres de
+qualquer dimensão (como discutido a acima).
 
-Font sizes I set in rems with a pixel fallback. This gives the accessibility
-benefits of ems with the confidence of pixels. Here is a handy Sass mixin to
-work out a rem and pixel fallback for you (assuming you set your base font
-size in a variable somewhere):
+Tamanhos de fontes eu uso em rems com fallbacks em pixels. Isso da os benefícios 
+de acessibilidade de ems com confidencia de pixels. Aqui é uma mistura de Sass para
+trabalhar com rem e fallback em pixels para você (assumindo que você configura o tamanho de fonte
+base em variaveis em algum lugar);
 
     @mixin font-size($font-size){
         font-size:$font-size +px;
         font-size:$font-size / $base-font-size +rem;
     }
 
-I only use pixels for items whose dimensions were defined before the came into
-the site. This includes things like images and sprites whose dimensions are
-inherently set absolutely in pixels.
+Eu só uso pixels para itens o qual dimensões foram definidas antes de entrar no site.
+Isso inclui coisas como imagens e sprites o qual dimensões são inerentemente 
+configuradas em pixels
 
-### Font sizing
+### Dimensionamento da fonte
 
 I define a series of classes akin to a grid system for sizing fonts. These
 classes can be used to style type in a double stranded heading hierarchy. For a
