@@ -230,26 +230,25 @@ faz mais sentido usar uma única linha do nosso CSS.
 
 ## Convenções de Nome
 
-For the most part I simply use hyphen delimited classes (e.g. `.foo-bar`, not
-`.foo_bar` or `.fooBar`), however in certain circumstances I use BEM (Block,
-Element, Modifier) notation.
+Para a maioria das partes eu simplesmente uso classes delimitadas por hífem (ex. `.foo-bar`, não 
+`.foo_bar` ou `.fooBar`), Entretanto em certas circunstancias eu uso notação BEM (Block,
+Element, Modifier).
 
-<abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming
-and classifying CSS selectors in a way to make them a lot more strict,
-transparent and informative.
+<abbr title="Block, Element, Modifier">BEM</abbr> é uma metodologia para nomear
+e seletores de CSS de um jeito que os deixem mais restritos, transparentes e informativos
 
-The naming convention follows this pattern:
+Essa convenção de nomes segue esse padrão:
 
     .block{}
     .block__element{}
     .block--modifier{}
 
-* `.block` represents the higher level of an abstraction or component.
-* `.block__element` represents a descendent of `.block` that helps form `.block`
-  as a whole.
-* `.block--modifier` represents a different state or version of `.block`.
+* `.block` representa o maior level de abstração ou componente.
+* `.block__element` representa um descendente de `.block` que ajuda a formar `.block`
+    como um todo.
+* `.block--modifier` representa um estado diferente ou versão de `.block`.
 
-An **analogy** of how BEM classes work might be:
+Uma **analogia** de como as classes BEM podem funcionar:
 
     .person{}
     .person--woman{}
@@ -257,31 +256,31 @@ An **analogy** of how BEM classes work might be:
         .person__hand--left{}
         .person__hand--right{}
 
-Here we can see that the basic object we’re describing is a person, and that a
-different type of person might be a woman. We can also see that people have
-hands; these are sub-parts of people, and there are different variations,
-like left and right.
+Aqui podemos ver que o objeto basico que estamos descrevendo é a pessoa (person), e que um
+tipo diferente de pessoa poderia ser a mulher (woman). Nós podemos perceber que people tem 
+mãos (hands); esses são sub-partes de pessoa (people), e ha diferentes variações,
+como esquerda(left) e direita (right).
 
-We can now namespace our selectors based on their base objects and we can also
-communicate what job the selector does; is it a sub-component (`__`) or a
-variation (`--`)?
+Nós podemos nomear nossos seletores baseados na base de seus objetos e nós podemos também
+comunicar que trabalho o seletor faz; ele é um sub-componente (`__`) ou uma variação
+(`--`)?
 
-So, `.page-wrapper` is a standalone selector; it doesn’t form part of an
-abstraction or a component and as such it named correctly. `.widget-heading`,
-however, _is_ related to a component; it is a child of the `.widget` construct
-so we would rename this class `.widget__heading`.
+Então, `.page-wrapper` é um seletor autônomo; ele não faz parte de uma abstração
+ou componente  and as such it named correctly (traduzir). `.widget-heading`,
+entretanto, _é_ relacionado a um componente; ele é um filho de `.widget`
+então nós renomeariamos essa classe para `.widget__heading`.
 
-BEM looks a little uglier, and is a lot more verbose, but it grants us a lot of
-power in that we can glean the functions and relationships of elements from
-their classes alone. Also, BEM syntax will typically compress (gzip) very well
-as compression favours/works well with repetition.
+BEM parece umpouco feio, e é muito mais detalhado, mas ele nos fornece muito
+poder para que possamos pegar as funções e relações de elementos de suas classes 
+independentes. A sintaxe do BEM vai tipicamente comprimir (gzip) muito bem já 
+que a compressão favorece/trabalha bem com repetições.
 
-Regardless of whether you need to use BEM or not, always ensure classes are
-sensibly named; keep them as short as possible but as long as necessary. Ensure
-any objects or abstractions are very vaguely named (e.g. `.ui-list`, `.media`)
-to allow for greater reuse. Extensions of objects should be much more explicitly
-named (e.g. `.user-avatar-link`). Don’t worry about the amount or length of
-classes; gzip will compress well written code _incredibly_ well.
+Independentemente se precisa usar o BEM ou não, sempre garanta que as classes
+sejam sensatamente nomeadas; as mantenha o quao curtas quanto possível mas quão longas
+quanto necessário. Garanta que qualquer objeto ou abstração sejam vagamente nomeadas (ex. `ui-list`, `.media`)
+para garantir o reuso. Extensões de objetos devem ser bem mais explicitamente
+nomeadas (ex. `user-avatar-link`). Não se preocupe com o tamanho das classes;
+gzip vai sempre comprimir códigos bem escritos _incredibly_ well.
 
 ### Classes in HTML
 
