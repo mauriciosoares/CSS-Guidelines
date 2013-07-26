@@ -529,193 +529,184 @@ configuradas em pixels
 
 ### Dimensionamento da fonte
 
-I define a series of classes akin to a grid system for sizing fonts. These
-classes can be used to style type in a double stranded heading hierarchy. For a
-full explanation of how this works please refer to my article
+Eu defino uma série de classes semelhante a um sistema de grid pelos dimensioamentos de fonte. Essas
+classes podem ser usadas para tipo de estilo em uma hierarquia de titulos de cadeia dupla. Para uma 
+explicação completa de como isso funciona acesse meu artigo 
 [Pragmatic, practical font-sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
 
-## Shorthand
+## Taquigrafia
 
-**Shorthand CSS needs to be used with caution.**
+**Taquigrafia em CSS precisa ser usada com precaução.**
 
-It might be tempting to use declarations like `background:red;` but in doing so
-what you are actually saying is ‘I want no image to scroll, aligned top-left,
-repeating X and Y, and a background colour of red’. Nine times out of ten this
-won’t cause any issues but that one time it does is annoying enough to warrant
-not using such shorthand. Instead use `background-color:red;`.
+Deve ser tentador usar declarações como `background:red;` mas fazendo isso
+o que você realmente diz é Eu não quero imagens para scrolls, alinhado top-left,
+repetindo X e Y, e a cor de fundo vermelho‘. Nove vezes de dez isso não vai causar
+nenhum problema, mas dessa que ele causa é irritante o suficiente para garantir
+para não usar taquigrafia. Ao invés use `background-color: red;`.
 
-Similarly, declarations like `margin:0;` are nice and short, but
-**be explicit**. If you actually only really want to affect the margin on
-the bottom of an element then it is more appropriate to use `margin-bottom:0;`.
+Declarações similares como `margin:0;` são boas e curtas, mas **seja explicito**.
+Se você realmente quer somente que afete a margin no bottom de um elemento, então
+é mais propriado que você use `margin-bottom:0;`.
 
-Be explicit in which properties you set and take care to not inadvertently unset
-others with shorthand. E.g. if you only want to remove the bottom margin on an
-element then there is no sense in setting all margins to zero with `margin:0;`.
+Seja explicito em qual propriedade você configura e toma cuidado não inadvertidamente desconfigurar
+outras com taquigrafia. Ex. se você só quer remover o bottom margin em um elemento
+depois não faz sentido em configurar todas as margins para zero com `margin: 0`;
 
-Shorthand is good, but easily misused.
+Taquigrafia é bom, mas facilmente mal usada.
 
 ## IDs
 
-A quick note on IDs in CSS before we dive into selectors in general.
+Uma rápida observação sobre IDs em CSS antes de entrarmos em seletores geral.
 
-**NEVER use IDs in CSS.**
+**NUNCA use IDs em CSS.**
 
-They can be used in your markup for JS and fragment identifiers but use only
-classes for styling. You don’t want to see a single ID in any stylesheets!
+Eles podem ser usado na sua marcação para JS e identificadores de fragmentos mas use somente
+classes para estilizar. Você não quer ver um único ID em qualquer folha de estilo!
 
-Classes come with the benefit of being reusable (even if we don’t want to, we
-can) and they have a nice, low specificity. Specificity is one of the quickest
-ways to run into difficulties in projects and keeping it low at all times is
-imperative. An ID is **255** times more specific than a class, so never ever use
-them in CSS _ever_.
+As classes bem com o benefício de serem reusáveis (mesmo se não quisermos, nós podemos)
+E elas tem uma boa, e baixa especificidade. Especificidade é um dos jeitos mais rápidos
+de encontrar dificuldades em projetos. Um ID é **255** vezes mais específico do que uma class,
+então nunca use-os em CSS _nunca_.
 
-## Selectors
+## Seletores
 
-Keep selectors short, efficient and portable.
+Mantenha seletores curtos, eficientes e portaveis.
 
-Heavily location-based selectors are bad for a number of reasons. For example,
-take `.sidebar h3 span{}`. This selector is too location-based and thus we
-cannot move that `span` outside of a `h3` outside of `.sidebar` and maintain
-styling.
+Seletores pesadamente baseados em localidades são ruim por inúmeras razões. Por exemplo,
+peque `.sidebar h3 spanP{`. Esse seletor é muito baseado em localidade e entao nós 
+não pdoemos mover esse `span` fora de um `h3` e fora de um `.sidebar` e manter o estilo.
 
-Selectors which are too long also introduce performance issues; the more checks
-in a selector (e.g. `.sidebar h3 span` has three checks, `.content ul p a` has
-four), the more work the browser has to do.
+Seletores que são muito compridos também nos trazem problemas de performance; quanto mais itens
+em um seletor (ex. `.sidebar h3 span` tem tres itens, `.content ul p a` tem quatro), masi o browser
+tem que trabalhar.
 
-Make sure styles aren’t dependent on location where possible, and make sure
-selectors are nice and short.
+Certifique-se que estilos não dependam da localização onde possível, e certifique-se que 
+seletores sejam bons e pequenos.
 
-Selectors as a whole should be kept short (e.g. one class deep) but the class
-names themselves should be as long as they need to be. A class of `.user-avatar`
-is far nicer than `.usr-avt`.
+Seletores como um todo deveriam ter mantidos pequenos (ex. uma classe de profundidade) mas o nome da classe
+em sói deveria ser quao grande quanto necessário. Uma classe de `user-avatar` é muito
+melhor do que `.usr-avt`.
 
-**Remember:** classes are neither semantic or insemantic; they are sensible or
-insensible! Stop stressing about ‘semantic’ class names and pick something
-sensible and futureproof.
+**Lembre-se** classes não são nem semanticas ou isemanticas; elas são sensíveis ou
+insensíveis! Pare de se estressar sobre  nomes de classes ‘semanticos‘ e escolha algo
+sensível e a prova de complicações no futuro.
 
-### Over-qualified selectors
+### Seletores Super-qualificados
 
-As discussed above, qualified selectors are bad news.
+Como discutido acima, seletores qualificados são más novidades.
 
-An over-qualified selector is one like `div.promo`. You could probably get the
-same effect from just using `.promo`. Of course sometimes you will _want_ to
-qualify a class with an element (e.g. if you have a generic `.error` class that
-needs to look different when applied to different elements (e.g.
-`.error{ color:red; }` `div.error{ padding:14px; }`)), but generally avoid it
-where possible.
+Um seletor super-qualificado é como `div.promo`. You provavelmente poderia ter o mesmo
+efeito somente usando `.promo`. Claro você vai _querer_ qualificar uma classe com um elemento
+(ex. se você tem uma class `.error` genérica que precise parecer diferente qunado aplicada 
+a um elemento diferente (ex. `.error{color:redl}` `div.error{padding: 14px}`)), mas evite
+isso quando possível.
 
-Another example of an over-qualified selector might be `ul.nav li a{}`. As
-above, we can instantly drop the `ul` and because we know `.nav` is a list, we
-therefore know that any `a` _must_ be in an `li`, so we can get `ul.nav li a{}`
-down to just `.nav a{}`.
+Outro exemplo de seletores super-qualificados pode ser `ul.nav li a{}`. Como visto
+acima, nós podemos instantaneamente tirar o `ul` e por isso nós sabems que `.nave` é uam lista, 
+portante sabemos que qualquer `a` _deve_ estar em uma `li`, para que possamos ter `ul.nav li a{}` 
+simplificado para somente `.nav a{}`.
 
-### Selector performance
+### Performance de Seletores
 
-Whilst it is true that browsers will only ever keep getting faster at rendering
-CSS, efficiency is something you could do to keep an eye on. Short, unnested
-selectors, not using the universal (`*{}`) selector as the key selector, and
-avoiding more complex CSS3 selectors should help circumvent these problems.
+Enquanto é verdade que browsers sempre irão ficar mais rápido a reinderizar CSS, 
+eficiencia é algo que você pode continuar fazendo. Seletores curtos e não aninhados, 
+não usando o seletor universal (`*{}`) como seletor chave, e evitando seletores
+de CSS3 mais complexos deve ajudar a evitar esses problemas.
 
-## CSS selector intent
+## Identação de seletores em CSS
 
-Instead of using selectors to drill down the DOM to an element, it is often best
-to put a class on the element you explicitly want to style. Let’s take a
-specific example with a selector like `.header ul{}`…
+Ao invés de usar seletores para perfurar o DOM até um elemento, é melhor
+colocar uma classe em um elemento que você quer estilizar explicitamente. Vamos ver
+um exemplo específico com seletores como `.header ul{}`…
 
-Let’s imagine that `ul` is indeed the main navigation for our website. It lives
-in the header as you might expect and is currently the only `ul` in there;
-`.header ul{}` will work, but it’s not ideal or advisable. It’s not very future
-proof and certainly not explicit enough. As soon as we add another `ul` to that
-header it will adopt the styling of our main nav and the the chances are it
-won’t want to. This means we either have to refactor a lot of code _or_ undo a
-lot of styling on subsequent `ul`s in that `.header` to remove the effects of
-the far reaching selector.
+Vamos imaginar que o `ul` é o navegador principal do nosso site. Ele live
+no header como você deve imaginar e é o único `ul` nele;
+`.header ul{}` vai funcionar, mas nao é idealmente aconselhavel. Não é a prova de 
+erros futuros e certamente não é esplicito o suficiente. Assim que adicionarmos outra `ul` para 
+esse header ele vai adotar os estilos de nosso nav principal e as chances são que não queremos isso.
+Isso significa que nós vamos ter que refatorizar muitos códigos _ou_ desfazer muitos estilos 
+de `ul` nesse `.header` para remover os efeitos desse seletor.
 
-Your selector’s intent must match that of your reason for styling something;
-ask yourself **‘am I selecting this because it’s a `ul` inside of `.header` or
-because it is my site’s main nav?’**. The answer to this will determine your
-selector.
+A intenção de seus seletores devem bater com as razões para estilizar alguma coisa;
+pergunte-se a sí mesmo **‘Eu estou selecionando isso porque isso é uma `ul` dentro de 
+um `.header` ou porque esse é meu nav principal do meu site?‘**. A resposta para isso vai determinar
+seu seletor.
 
-Make sure your key selector is never an element/type selector or
-object/abstraction class. You never really want to see selectors like
-`.sidebar ul{}` or `.footer .media{}` in our theme stylesheets.
+Tenha certeza que a chave do seu seletor nunca é um seletor elemento/tipo ou 
+uma classe objeto/abstração. Você nunca quer ver seletores como `.sidebar ul{}` ou
+`.footer .media{}` nas folhas de estilo do seu tema.
 
-Be explicit; target the element you want to affect, not its parent. Never assume
-that markup won’t change. **Write selectors that target what you want, not what
-happens to be there already.**
+Seja explicito; localize o elemento que você quer afetar, não o seu pai. Nunca assuma 
+que a marcação nunca irá mudar. **Escreva seletores que mirem no que você quer, não no que 
+já está lá.**
 
-For a full write up please see my article
-[Shoot to kill; CSS selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
+Para uma escrita completa, por favor veja meu artigo [Shoot to kill; CSS selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
+
 
 ## `!important`
 
-It is okay to use `!important` on helper classes only. To add `!important`
-preemptively is fine, e.g. `.error{ color:red!important }`, as you know you will
-**always** want this rule to take precedence.
+Está tudo bem em usar `!important` em classes de helpers somente. Adicionar `!important`
+preventivamente não tem problema, ex. `.error{color: red!important}`, como você deve saber você vai
+**sempre** quere que essa regra prevaleça.
 
-Using `!important` reactively, e.g. to get yourself out of nasty specificity
-situations, is not advised. Rework your CSS and try to combat these issues by
-refactoring your selectors. Keeping your selectors short and avoiding IDs will
-help out here massively.
+Não é um conselho usar `!important` reativamente, ex. para se livrar de situações desagradáveis de 
+especificidades. Retrabalhe seu CSS e tente combater esses problemas refatorizando
+seus seletores. Mantendo seus seletores curtos e evitando IDs vai te ajudar massivamente.
 
-## Magic numbers and absolutes
+## Números mágicos e absolutes
 
-A magic number is a number which is used because ‘it just works’. These are bad
-because they rarely work for any real reason and are not usually very
-futureproof or flexible/forgiving. They tend to fix symptoms and not problems.
+Um número mágico é um número o qual é usado porque `ele simplesmente funciona`. Eles são ruins
+porque eles raramente funcionam para qualquer razão real, e geralmente não muito a 
+prova do futuro ou flexiveis. Eles tendem a consertar sintomas e não problemas.
 
-For example, using `.dropdown-nav li:hover ul{ top:37px; }` to move a dropdown
-to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only
-works here because in this particular scenario the `.dropdown-nav` happens to be
-37px tall.
+Por exemplo, usando `.dropdown-nav li:hover ul{{top:37px;}` para mover um dropdown para o fundo
+de uma nav em um hover é ruim, já que 37px é um número específico. 37px funciona somente aqui
+porque nesse cenário particular o `.dropdown-nav` é 37px de altura.
 
-Instead you should use `.dropdown-nav li:hover ul{ top:100%; }` which means no
-matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100% from
-the top.
+Ao invés você deveria usar `.dropdown-nav li:hover ul{ top: 100%; }` o que significa que não
+importa o quao alto o `.dropdown-nav` fique, o dropdown vai sempre ficar 100% do topo.
 
-Every time you hard code a number think twice; if you can avoid it by using
-keywords or ‘aliases’ (i.e. `top:100%` to mean ‘all the way from the top’)
-or&mdash;even better&mdash;no measurements at all then you probably should.
+Toda vez que você colocar um número pense duas vezes; se você pode evitar isso usando
+palavras chaves como `alias` (ex. `top: 100%` para dizer `totalmente afastado desse topo`)
+ou&mdash;até melhor&mdash;sem medições, faça isso.
 
-Every hard-coded measurement you set is a commitment you might not necessarily
-want to keep.
+Todo código de medição que você colocar é um compromisso que você talvez não queira manter.
 
-## Conditional stylesheets
+## Folhas de estilo condicionais
 
-IE stylesheets can, by and large, be totally avoided. The only time an IE
-stylesheet may be required is to circumvent blatant lack of support (e.g. PNG
-fixes).
+Folhas de estilo para IE podem, em geral, ser totalmente evitadas. A única vez que uma folha de estilo
+para IE pode ser usada é para algum tipo de suporte (ex. consertar arquivos .PNG)
 
-As a general rule, all layout and box-model rules can and _will_ work without an
-IE stylesheet if you refactor and rework your CSS. This means you never want to
-see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such
-CSS that is clearly using arbitrary styling to just ‘make stuff work’.
+Como uma regra geral, todo layout e regra de box-model pode e _vai_ funcionar sem uma
+folha de estilo para IE se você refatorizar e retrabalhar seu CSS. Isso significa que você nunca
+vai querer ver `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` ou algum outro tipo
+de CSS que esta sendo usado arbitrariamente para estilizar e `fazer a coisa funcionar`.
 
 ## Debugging
 
-If you run into a CSS problem **take code away before you start adding more** in
-a bid to fix it. The problem exists in CSS that is already written, more CSS
-isn’t the right answer!
+Se você tiver algum problema de css **tire algum código, antes de começar a adicoinar mais** para
+consertar isso. O problema existe no CSS que já está escrito, masi CSS não
+é a maneira certa!
 
-Delete chunks of markup and CSS until your problem goes away, then you can
-determine which part of the code the problem lies in.
+Delete algumas marcações e CSS até que o problema acabe, depois você 
+pode determinar em qual porte do código o problema se encontra.
 
-It can be tempting to put an `overflow:hidden;` on something to hide the effects
-of a layout quirk, but overflow was probably never the problem; **fix the
-problem, not its symptoms.**
+Pode ser tentador colocar um `overflow:hidden;` em alguma coisa para esconder os efeitos
+de um problema de layout, mas overflow provavelmente nunca foi o problema; **arrume o problema, 
+não os sintomas.**
 
-## Preprocessors
+## Pré-processadores
 
-Sass is my preprocessor of choice. **Use it wisely.** Use Sass to make your CSS
-more powerful but avoid nesting like the plague! Nest only when it would
-actually be necessary in vanilla CSS, e.g.
+Sass é o pré-processador que eu escolhi. **Use-o sabiamente.** Use Sass para fazer seu CSS
+mais podreozo, mas evite aninhar como se fosse uma praga! Aninhe somente quando
+necessário em CSS vanilla, ex.
 
     .header{}
     .header .site-nav{}
     .header .site-nav li{}
     .header .site-nav li a{}
 
-Would be wholly unnecessary in normal CSS, so the following would be **bad**
+Seria totalmente desnecessário em um CSS normal, portanto o seguinte seria **ruim**
 Sass:
 
     .header{
@@ -726,7 +717,7 @@ Sass:
         }
     }
 
-If you were to Sass this up you’d write it as:
+Se você usasse o Sass ele escreveria da seguinte maneira:
 
     .header{}
     .site-nav{
