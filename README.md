@@ -156,9 +156,9 @@ Uma folha de estilo bem organizada parece com isso:
 4. **Componentes** – componentes completos construidos dos objetos e suas extensões.
 5. **Estilos com !important** – erros, estados, etc.
 
-This means that—as you go down the document—each section builds upon and
-inherits sensibly from the previous one(s). There should be less undoing of
-styles, less specificity problems and all-round better architected stylesheets.
+Isso significa que -conforme você desce seu documento- cada seção se baseia e
+herda sensatamente do anterior(es). Deve haver menos perda de estilos, 
+menos problemas de especificidade e uma melhor arquitetura no seu documento.
 
 Para mais informaçãos, eu recomendo altamente o [SMACSS](http://smacss.com)
 do Jonathan Snook.
